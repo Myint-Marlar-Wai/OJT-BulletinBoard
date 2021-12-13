@@ -14,7 +14,12 @@
       <a href="{{ route('post.importForm') }}" class="btn btn-primary mr-3">Upload</a>
       <form action="{{ route('post.exportIntoExcel') }}" method="POST">
         @csrf
+        @if ($posts->count())
         <button class="btn btn-primary">Download</button>
+        @else
+        <button class="btn btn-primary" disabled>Download</button>
+        @endif
+
       </form>
     </div>
     <div class="col-sm-12 col-md-4 mt-3">

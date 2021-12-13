@@ -17,7 +17,7 @@
     <div class="col-sm-12 col-md-4 d-flex mt-3">
       <form action="{{ url('/post_search') }}" method="GET" class="d-flex">
         @csrf
-        <input type="search" name="query" placeholder="Search....." class="form-control search-input typeahead">
+        <input type="search" name="query" placeholder="Search....." value="{{request('query')}}" class="form-control search-input typeahead">
         <button type="submit" class="btn btn-primary">Search</button>
       </div>
     </form>

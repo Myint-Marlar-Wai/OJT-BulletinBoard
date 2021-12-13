@@ -5,23 +5,20 @@ namespace App\Exports;
 use App\Models\Post;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Auth;
 
 class PostsExport implements FromCollection, WithHeadings
 {
     public function headings():array
     {
         return [
-            'id',
-            'title',
-            'description',
-            'status',
-            'create_user_id',
-            'updated_user_id',
-            'deleted_user_id',
-            'created_at',
-            'updated_at',
-            'deleted_at',
-            
+            'Id',
+            'Title',
+            'Description',
+            'Status',
+            'Create User',
+            'Created At',
+            'Updated At',      
         ];
     }
 
@@ -30,6 +27,17 @@ class PostsExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return Post::all();
+        return Post::all()->map(function($post) {
+
+            return [
+                'id' => $post->id,
+               'title' => $post->title,
+               'description' => $post->description,
+               'status' => $post->status,
+               'create_user_id' => $post->user->name,
+               'created_at' => $post->created_at,
+               'updated_at' => $post->updated_at,
+            ];
+         });
     }
 }

@@ -12,10 +12,10 @@
     <div class="col-12 d-flex mt-3">
       <form action="{{ url('/user_search') }}" method="GET" class="d-flex">
         @csrf
-        <input type="text" name="name" placeholder="Name" class="form-control search-input mr-2">
-        <input type="text" name="email" placeholder="Email" class="form-control search-input mr-2">
-        <input type="date" name="created_from" placeholder="Created From" class="form-control search-input mr-2">
-        <input type="date" name="created_to" placeholder="Created To" class="form-control search-input mr-2">
+        <input type="text" name="name" placeholder="Name" value="{{request('name')}}" class="form-control search-input mr-2">
+        <input type="text" name="email" placeholder="Email" value="{{request('email')}}" class="form-control search-input mr-2">
+        <input type="date" name="created_from" placeholder="Created From" value="{{request('created_from')}}" class="form-control search-input mr-2">
+        <input type="date" name="created_to" placeholder="Created To" value="{{request('created_to')}}" class="form-control search-input mr-2">
         <button type="submit" class="btn btn-primary">Search</button>
       </form>
       <a href="{{ route('user.create') }}" class="btn btn-primary ml-3">Add</a>

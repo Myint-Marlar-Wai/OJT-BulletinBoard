@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth'], function() {
 /* Post */
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('post', PostController::class);
-    Route::post('', 'PostController@exportIntoExcel')->name('post.exportIntoExcel');
+    Route::post('post/export', 'PostController@exportIntoExcel')->name('post.exportIntoExcel');
     Route::post('post/confirm', 'PostController@postConfirm')->name('post.postConfirm');
     Route::post('post/{post}/update_confirm', 'PostController@updateConfirm')->name('post.updateConfirm');
     Route::get('/post_search', 'PostController@postSearch')->name('postSearch');

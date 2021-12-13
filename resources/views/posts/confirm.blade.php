@@ -32,7 +32,7 @@
 
                     <div class="btn-blk">
                         <button type="submit" class="btn btn-primary mr-3">Create</button>
-                        <a class="btn btn-secondary" href="javascript:void(0)" onclick="goBack()">Cancle</a>
+                        <a class="btn btn-secondary" href="javascript:void(0)" onclick="goBack()">Cancel</a>
                     </div>
                 </form>
             </div>

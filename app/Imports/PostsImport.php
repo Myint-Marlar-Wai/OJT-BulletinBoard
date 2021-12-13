@@ -15,16 +15,12 @@ class PostsImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
+        $user = auth()->user();
         return new Post([
             'title'     => $row['title'],
             'description'    => $row['description'],
             'status'    => $row['status'],
-            'create_user_id'    => $row['create_user_id'],
-            'updated_user_id'    => $row['updated_user_id'],
-            'deleted_user_id'    => $row['deleted_user_id'],
-            'created_at'    => $row['created_at'],
-            'updated_at'    => $row['updated_at'],
-            'deleted_at'    => $row['deleted_at'],
+            'create_user_id'    => $user->id
         ]);
     }
 }

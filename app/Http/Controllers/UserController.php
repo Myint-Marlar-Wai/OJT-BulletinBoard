@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserCreateRequest;
 use App\Models\User;
-use App\Models\Post;
 use Auth;
 use Hash;
 
 class UserController extends Controller
 {
     /**
-     * Users List
+     * Display Users List
+     *
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {   
@@ -22,7 +23,9 @@ class UserController extends Controller
     }
 
     /**
-     * User Creation
+     * Create User Form
+     *
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -31,6 +34,9 @@ class UserController extends Controller
 
     /**
      * User Confirmation
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function confirm(UserCreateRequest $request)
     {   
@@ -61,6 +67,9 @@ class UserController extends Controller
 
     /**
      * User Data Store
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {   
@@ -87,8 +96,11 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
-    /**
-     * Edit User Data
+     /**
+     * Show the form for editing post
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
@@ -99,7 +111,11 @@ class UserController extends Controller
 
 
     /**
-     * Update User Confirmation
+     * Post Update Confirmation
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  $user
+     * @return \Illuminate\Http\Response
      */
     public function updateConfirm(Request $request,User $user)
     {    
@@ -135,7 +151,11 @@ class UserController extends Controller
 
 
     /**
-     * User Data Update Store
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
@@ -156,15 +176,21 @@ class UserController extends Controller
     }
 
     /**
-     * User Profile
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('users/index');
+        //
     }
 
     /**
      * User Profile
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function userProfile($id)
     {
@@ -174,7 +200,10 @@ class UserController extends Controller
     }
 
     /**
-     * Display Password Change Screen
+     * Change Password Form
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function passwordScreen($id)
     {
@@ -184,7 +213,10 @@ class UserController extends Controller
     }
 
     /**
-     * Change Password Process
+     * Change Password Function
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function changePassword(UserCreateRequest $request)
     {
@@ -203,6 +235,9 @@ class UserController extends Controller
 
     /**
      * Search Function
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function userSearch(Request $request)
     {   
@@ -238,9 +273,12 @@ class UserController extends Controller
     }
 
     /**
-     * Delete Action
+     * Remove the specified resource from storage.
+     *
+     * @param  $user
+     * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, User $user)
+    public function destroy(User $user)
     {   
         $user->deleted_user_id = Auth::user()->id;
         $user->save();

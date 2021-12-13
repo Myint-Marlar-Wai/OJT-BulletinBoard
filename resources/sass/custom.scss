@@ -7,6 +7,15 @@ $gray: #ccc;
 $color01: #2176bd;
 $color02: #5dabeb;
 
+html, body {
+	height:100%;
+}
+
+#wrapper {
+	position: relative;
+	min-height:100%;
+}
+
 @media (min-width: 1200px) {
 	.container {
 		max-width: 980px;
@@ -37,7 +46,7 @@ h2 {
 	color: $black;
 }
 .content {
-	min-height: 540px;
+	margin-bottom: 60px;
 	&.border {
 		background: #fff;
     box-shadow: 1px 1px 9px #5dabeb;
@@ -255,6 +264,10 @@ input {
 
 /* Footer Css */
 footer {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 	background-color: $color02;
 	.ft-logo {
 		font-size: 20px;

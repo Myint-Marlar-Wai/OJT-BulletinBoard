@@ -26,61 +26,61 @@
 </head>
 
 <body>
+<div id="wrapper">
   <header>
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
       <div class="container">
         <a class="navbar-brand" href="#">
           <h1 class="col01">SCM Bulletinboard</h1>
         </a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-        data-target="#navb">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
         <span class="navbar-toggler-icon"></span>
-      </button>
+        </button>
       
-      <div class="collapse navbar-collapse" id="navb">
-        @if (Route::has('login'))
-        <ul class="navbar-nav">
-          @auth
-          @if (Auth::user()->type == '0')
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('user.index') }}">Users</a>
-          </li>
+        <div class="collapse navbar-collapse" id="navb">
+          @if (Route::has('login'))
+          <ul class="navbar-nav">
+            @auth
+            @if (Auth::user()->type == '0')
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('user.index') }}">Users</a>
+            </li>
+            @endif
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle col01" href="#" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              {{ Auth::user()->name }}
+            </a>
+            
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <form action="{{ url('user/' . Auth::user()->id . '/profile') }}" method="POST"
+                class="dropdown-item font-weight-bold col01">
+                @csrf
+                <button type="submit" class="nav-link"><i
+                  class="fas fa-user-alt"></i>&nbsp; Profile</button>
+                </form>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                class="dropdown-item font-weight-bold col01">
+                @csrf
+                <button type="submit" class="nav-link"><i
+                  class="fa fa-sign-out-alt"></i>&nbsp; Logout</button>
+                </form>
+              </div>
+            </li>
+            @endauth
+          </ul>
           @endif
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle col01" href="#" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            {{ Auth::user()->name }}
-          </a>
-          
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <form action="{{ url('user/' . Auth::user()->id . '/profile') }}" method="POST"
-              class="dropdown-item font-weight-bold col01">
-              @csrf
-              <button type="submit" class="nav-link"><i
-                class="fas fa-user-alt"></i>&nbsp; Profile</button>
-              </form>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST"
-              class="dropdown-item font-weight-bold col01">
-              @csrf
-              <button type="submit" class="nav-link"><i
-                class="fa fa-sign-out-alt"></i>&nbsp; Logout</button>
-              </form>
-            </div>
-          </li>
-          @endauth
-        </ul>
-        @endif
+        </div>
       </div>
-    </div>
-  </nav>
-</header>
+    </nav>
+  </header>
 <div class="container py-5">
   @yield('content')
 </div>
-<footer class="py-2 bg-gray">
+<footer id="footer" class="py-2 bg-gray mt-4">
   <div class="container">
     <div class="d-flex justify-content-between align-items-center">
       <a href="#" class="ft-logo">SCM Bulletinboard</a>
@@ -90,6 +90,8 @@
     </div>
   </div>
 </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
 rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
@@ -97,6 +99,18 @@ rel="stylesheet">
   function goBack() {
     window.history.back();
   }
+</script>
+<script type="text/javascript">
+	$(document).ready(
+    function(){
+        $('#fileInput').change(
+            function(){
+                if ($(this).val()) {
+                    $('#uploader').attr('disabled',false); 
+                } 
+            }
+            );
+    });
 </script>
 </body>
 </html>

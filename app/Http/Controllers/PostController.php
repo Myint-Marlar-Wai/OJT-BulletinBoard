@@ -13,7 +13,9 @@ use Excel;
 class PostController extends Controller
 {
     /**
-     * Posts List
+     * Display Posts List
+     *
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {   
@@ -31,7 +33,9 @@ class PostController extends Controller
     }
 
     /**
-     * Create Post
+     * Create Post Form
+     *
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -40,7 +44,11 @@ class PostController extends Controller
 
 
     /**
-     * Create Post Confirmation
+     * Post Confirmation
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  $post
+     * @return \Illuminate\Http\Response
      */
     public function postConfirm(Request $request, Post $post)
     {  
@@ -61,6 +69,9 @@ class PostController extends Controller
 
     /**
      * Post Data Store
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -72,7 +83,7 @@ class PostController extends Controller
             
         ]);
         
-        $post = Post::create($validatedData);
+        Post::create($validatedData);
    
         return redirect('/post')->with('success', 'Post is successfully saved');
     }
@@ -88,8 +99,11 @@ class PostController extends Controller
         //
     }
 
-    /**
-     * Edit Post
+     /**
+     * Show the form for editing post
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
@@ -98,7 +112,11 @@ class PostController extends Controller
     }
 
     /**
-     * Update Post Confirmation
+     * Post Update Confirmation
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  $post
+     * @return \Illuminate\Http\Response
      */
     public function updateConfirm(Request $request,Post $post)
     {
@@ -121,7 +139,11 @@ class PostController extends Controller
     }
 
     /**
-     * Update Post Data Store
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request,$id)
     {   
@@ -136,9 +158,12 @@ class PostController extends Controller
     }
 
     /**
-     * Delete Action
+     * Remove the specified resource from storage.
+     *
+     * @param  $post
+     * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Post $post)
+    public function destroy(Post $post)
     {
         $post->deleted_user_id = Auth::user()->id;
         $post->save();
@@ -149,6 +174,8 @@ class PostController extends Controller
 
     /**
      * Search Function
+     *
+     * @return \Illuminate\Http\Response
      */
     public function postSearch()
     {   
@@ -158,11 +185,13 @@ class PostController extends Controller
                       ->orWhere("description","LIKE","%{$search_text}%")
                       ->paginate($countPerPage);
 
-        return view('posts/search',compact('posts'));
+        return view('posts/search',compact('posts'))->with('search_text');
     }
 
     /**
-     * Export Function
+     * Export Excel Function
+     *
+     * @return \Illuminate\Http\Response
      */
     public function exportIntoExcel()
     {   
@@ -172,14 +201,19 @@ class PostController extends Controller
 
     /**
      * Import Form
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function importForm()
+    public function importForm(Request $request)
     {
         return view('posts/import_form',['name'=> 'Upload CSV Form']);
     }
 
     /**
      * Import Function
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function import(Request $request) 
     {
