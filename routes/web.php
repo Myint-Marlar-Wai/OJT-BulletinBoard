@@ -17,8 +17,8 @@ Auth::routes();
 Route::get('/','PostController@index')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
 
-/* Users */
 Route::group(['middleware' => 'auth'], function() {
+    /* Users */
     Route::resource('user', UserController::class);
     Route::post('user/confirm', 'UserController@confirm')->name('user.confirm');
     Route::post('user/{user}/update_confirm', 'UserController@updateConfirm')->name('user.updateConfirm');
@@ -27,10 +27,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('user/{id}/change_password', 'UserController@passwordScreen')->name('user.passwordScreen');
     Route::post('user/id}/change_password', 'UserController@changePassword')->name('user.changePassword');
     Route::get('/user_search', 'UserController@userSearch')->name('userSearch');
-});
 
-/* Post */
-Route::group(['middleware' => 'auth'], function() {
+    /* Post */
     Route::resource('post', PostController::class);
     Route::post('post/export', 'PostController@exportIntoExcel')->name('post.exportIntoExcel');
     Route::post('post/confirm', 'PostController@postConfirm')->name('post.postConfirm');

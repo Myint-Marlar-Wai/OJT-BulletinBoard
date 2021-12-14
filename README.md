@@ -15,7 +15,7 @@ Please check the official laravel installation guide for server requirements bef
 
 Clone the repository
 ```
-git clone https://github.com/Myint-Marlar-Wai/bulletinboard.git
+git clone https://github.com/Myint-Marlar-Wai/OJT-BulletinBoard.git
 ```
 Switch to the repo folder
 ```
@@ -60,7 +60,7 @@ Password : M@rlar12345
 - [Posts](#Posts)
   - Admin Role(Can manage the all posts)
   - User Role(Can manage only my post)
--  [User Profile](#Profile)
+- [User Profile](#Profile)
   - Admin Role(Can manage all user profile)
   - User Role(Can manage only my profile)
 
