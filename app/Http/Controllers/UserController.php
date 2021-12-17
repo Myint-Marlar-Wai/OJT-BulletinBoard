@@ -126,12 +126,14 @@ class UserController extends Controller
             'type' => 'required',
         ]);
 
-        if ($request->file('profile')) {
+        if ($request->hasfile('profile')) {
             $profile = $request->file('profile');
             $path =('image/');
             $file_name = time() . "." . $profile->getClientOriginalName();
             $profile->move($path, $file_name);
             $profile_name = $file_name; 
+        } else {
+            $profile_name = $user->profile;
         }
         
         $user = [
@@ -172,7 +174,7 @@ class UserController extends Controller
 
 
            User::whereId($id)->update($validatedData);
-           return redirect()->route('user.index'); 
+           return redirect()->route('user.index')->with('success', 'User has been Updated'); 
     }
 
     /**

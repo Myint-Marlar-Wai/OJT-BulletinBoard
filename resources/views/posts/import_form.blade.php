@@ -8,7 +8,7 @@
       <div class="form-group row align-items-baseline">
         <label for="file" class="form-label col-md-4 text-md-right">Upload</label>
         <div class="col-md-6">
-          <input id="fileInput" class="form-control" type="file" name="file">
+          <input id="file" class="form-control" type="file" name="file">
           @error('file')
             <p class="alert alert-danger" role="alert">
               <strong>{{ $message }}</strong>

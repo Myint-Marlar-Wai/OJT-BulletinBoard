@@ -26,7 +26,7 @@
       <form action="{{ url('/post_search') }}" method="GET" class="d-flex">
         @csrf
         <input type="search" name="query" placeholder="Search....." class="form-control search-input typeahead">
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" id="search" class="btn btn-primary" disabled>Search</button>
       </form>
     </div>
     <div class="table-responsive-lg mx-auto mt-3">

@@ -32,7 +32,7 @@
       <div class="form-group row align-items-baseline">
         <label for="profile" class="form-label col-md-4 text-md-right">Profile</label>
         <div class="col-md-6">
-          <input class="form-control" type="file" id="profile" name="profile" onChange="previewFile()" value="{{ $user->profile }}">
+          <input class="form-control" type="file" id="profile" name="profile" onChange="previewFile()" value="{{old('profile', $user->profile)}}">
           <img id="previewImg" src="/image/{{ $user->profile }}" alt="Profile Image" style="max-width:130px;margin-top:10px;" />     
         </div>  
       </div>

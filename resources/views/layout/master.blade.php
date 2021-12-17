@@ -11,7 +11,9 @@
   <title>@yield('title') | SCM Bulletinboard</title>
   
   <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="{{ asset('js/custom.js') }}" defer></script>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,7 +93,6 @@
   </div>
 </footer>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
 rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
@@ -99,18 +100,6 @@ rel="stylesheet">
   function goBack() {
     window.history.back();
   }
-</script>
-<script type="text/javascript">
-	$(document).ready(
-    function(){
-        $('#fileInput').change(
-            function(){
-                if ($(this).val()) {
-                    $('#uploader').attr('disabled',false); 
-                } 
-            }
-            );
-    });
 </script>
 </body>
 </html>

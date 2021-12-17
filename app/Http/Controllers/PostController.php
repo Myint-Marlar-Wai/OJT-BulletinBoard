@@ -204,7 +204,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function importForm(Request $request)
+    public function importForm()
     {
         return view('posts/import_form',['name'=> 'Upload CSV Form']);
     }
@@ -217,6 +217,7 @@ class PostController extends Controller
      */
     public function import(Request $request) 
     {
+        
         Excel::import(new PostsImport,request()->file('file'));
            
         return redirect()->route('post.index');

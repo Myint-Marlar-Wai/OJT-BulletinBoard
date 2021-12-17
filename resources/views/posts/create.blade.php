@@ -11,7 +11,7 @@
               @csrf
               <div class="form-group row align-items-center">
                 <label for="title">Title <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" placeholder="Title..." id="title" name="title">
+                <input type="text" class="form-control" placeholder="Title..." id="title" name="title" value="{{ old('title') }}">
               </div>
               @error('title')
                 <p class="alert alert-danger" role="alert">
@@ -20,7 +20,7 @@
               @enderror
               <div class="form-group row align-items-center">
                 <label for="description">Description <span class="text-danger">*</span></label>
-                <textarea rows="5" columns="5" id="description" name="description" class="form-control"></textarea>
+                <textarea rows="5" columns="5" id="description" name="description" class="form-control" value="{{ old('description') }}"></textarea>
               </div>
               @error('description')
                 <p class="alert alert-danger" role="alert">

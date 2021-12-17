@@ -13,7 +13,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
           </div>
-          <input type="text" class="form-control" placeholder="Name" id="name" name="name">
+          <input type="text" class="form-control" placeholder="Name" id="name" name="name" value="{{ old('name') }}">
         </div>
         @error('name')
           <p class="alert alert-danger" role="alert">
@@ -30,7 +30,7 @@
             <span class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i>
             </span>
           </div>
-          <input type="text" class="form-control" placeholder="example@gmail.com" id="email" name="email">
+          <input type="text" class="form-control" placeholder="example@gmail.com" id="email" name="email" value="{{ old('email') }}">
         </div>
         @error('email')
         <p class="alert alert-danger" role="alert">
@@ -46,7 +46,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fa fa-key"></i></span>
           </div>
-          <input id="password" type="password" class="form-control" name="password" autocomplete="current-password">
+          <input id="password" type="password" class="form-control" name="password" value="{{ old('password') }}" autocomplete="current-password">
         </div>
         @error('password')
           <p class="alert alert-danger" role="alert">
@@ -62,14 +62,14 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fa fa-key"></i></span>
           </div>
-          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
+          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" autocomplete="new-password">
         </div>
       </div>
     </div>
     <div class="form-group row align-items-baseline">
       <label for="profile" class="form-label col-md-4 text-md-right">Profile</label>
       <div class="col-md-6">
-        <input class="form-control" type="file" id="profile" name="profile" onChange="previewFile()">
+        <input class="form-control" type="file" id="profile" name="profile" onChange="previewFile()" value="{{ old('profile') }}">
         <img id="previewImg" src="/image/demo.png" alt="Profile Image" style="max-width:130px;margin-top:10px;" />
       </div>  
     </div>
@@ -101,7 +101,7 @@
             <span class="input-group-text"><i class="fa fa-phone-square" aria-hidden="true"></i>
             </span>
           </div>
-          <input type="tel" class="form-control" placeholder="Enter Phone Number" id="phone" name="phone">
+          <input type="tel" class="form-control" placeholder="Enter Phone Number" id="phone" name="phone" value="{{ old('phone') }}">
         </div>
       </div>
     </div>
@@ -112,14 +112,14 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
           </div>
-          <input type="date" class="form-control" id="dob" name="dob">
+          <input type="date" class="form-control" id="dob" name="dob" value="{{ old('dob') }}">
         </div>
       </div>
     </div>
     <div class="form-group row align-items-center">
       <label for="address" class="col-md-4 text-md-right">Address</label>
       <div class="col-md-6">
-        <textarea rows="5" columns="5" id="address" name="address"></textarea>
+        <textarea rows="5" columns="5" id="address" name="address" value="{{ old('address') }}"></textarea>
       </div>
     </div>
     <div class="btn-blk">
