@@ -16,7 +16,7 @@
         <input type="text" name="email" placeholder="Email" value="{{request('email')}}" class="form-control search-input mr-2">
         <input type="date" name="created_from" placeholder="Created From" value="{{request('created_from')}}" class="form-control search-input mr-2">
         <input type="date" name="created_to" placeholder="Created To" value="{{request('created_to')}}" class="form-control search-input mr-2">
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" id="search" class="btn btn-primary">Search</button>
       </form>
       <a href="{{ route('user.create') }}" class="btn btn-primary ml-3">Add</a>
     </div>

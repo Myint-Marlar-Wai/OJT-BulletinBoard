@@ -12,13 +12,15 @@ $(document).ready(function () {
 });
 
 // Search Button
-$(document).ready(function(){
-  var $submit = $('#search');
-  var $file = $('.search-input');
-
-  $file.change(
-    function(){
-      $submit.attr('disabled',($(this).val() ? false : true));
+$(document).ready(function() {
+  $('#search').attr('disabled', true); // initially button is disabled
+  $('.search-input').on('keyup', function() {
+    var text_value = $(".search-input").val();
+    if ((!text_value.trim().length) || (text_value == "") || (text_value == null)) {
+      $('#search').attr('disabled', true);
+    } else {
+      $('#search').attr('disabled', false);
     }
-  );
+  });
+
 });

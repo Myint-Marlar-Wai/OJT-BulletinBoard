@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
                 'email' => 'fuso@gmail.com',
                 'password' => Hash::make('fu$o12345'),
                 'profile' => 'profile1.png',
-                'type' => '0',
+                'type' => '1',
                 'phone' => '0956235468',
                 'address' => 'SanChaung, Yangon',
                 'create_user_id' => '1',

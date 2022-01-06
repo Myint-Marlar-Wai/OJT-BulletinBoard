@@ -12,12 +12,16 @@
     <div class="col-sm-12 col-md-8 mt-3">
       <a href="{{ route('post.create') }}" class="btn btn-primary">Add</a>
       <a href="#" class="btn btn-primary">Upload</a>
-      <a href="#" class="btn btn-primary">Download</a>
+      @if ($posts->count())
+        <button class="btn btn-primary">Download</button>
+        @else
+        <button class="btn btn-primary" disabled>Download</button>
+        @endif
     </div>
     <div class="col-sm-12 col-md-4 d-flex mt-3">
       <form action="{{ url('/post_search') }}" method="GET" class="d-flex">
         @csrf
-        <input type="search" name="query" placeholder="Search....." value="{{request('query')}}" class="form-control search-input typeahead">
+        <input type="search" name="query" placeholder="Search....." value="" class="form-control search-input typeahead">
         <button type="submit" class="btn btn-primary">Search</button>
       </div>
     </form>

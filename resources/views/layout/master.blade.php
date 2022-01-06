@@ -75,6 +75,11 @@
             @endauth
           </ul>
           @endif
+          @guest 
+          <a href="{{ route('user.create') }}" class="btn btn-primary">
+            Register
+          </a>
+          @endguest
         </div>
       </div>
     </nav>

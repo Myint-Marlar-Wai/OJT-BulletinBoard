@@ -54,7 +54,7 @@ class PostController extends Controller
     {  
 
         $validatedData = $request->validate([
-            'title' => 'required|max:255|unique:posts',
+            'title' => 'required|max:255|unique:posts,deleted_at',
             'description' => 'required',
             
         ]);

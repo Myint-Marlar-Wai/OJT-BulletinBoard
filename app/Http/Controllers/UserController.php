@@ -244,22 +244,22 @@ class UserController extends Controller
     public function userSearch(Request $request)
     {   
         $countPerPage = config('constants.paginate_per_page');
-        $name = trim($request->get('name'));
+        $name = $_GET['name'];
         if ($name){
             $users = User::where('name','like',"%{$name}%")->paginate($countPerPage);
         }
 
-        $email = trim($request->get('email'));
+        $email = $_GET['email'];
         if ($email){
             $users = User::where('email','like',"%{$email}%")->paginate($countPerPage);
         }
 
-        $created_from = trim($request->get('created_from'));
+        $created_from = $_GET['created_from'];
         if ($created_from){
             $users = User::where('created_at','like',"%{$created_from}%")->paginate($countPerPage);
         }
 
-        $created_to = trim($request->get('created_to'));
+        $created_to = $_GET['created_to'];
         if ($created_to){
             $users = User::where('created_at','like',"%{$created_to}%")->paginate($countPerPage);
         } 
@@ -269,7 +269,7 @@ class UserController extends Controller
             $users = User::where('created_at','>=', $created_from)
                         ->where('created_at','<=', $created_to)
                         ->paginate($countPerPage);
-        } 
+        }
 
         return view('users/search',compact('users'));
     }
